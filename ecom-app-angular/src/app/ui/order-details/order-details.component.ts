@@ -14,7 +14,7 @@ export class OrderDetailsComponent {
     this.orderId = this.route.snapshot.params['id'];
   }
   ngOnInit() {
-    this.http.get("http://localhost:8086/api/orders/"+this.orderId).subscribe({
+    this.http.get("http://localhost:8888/ORDER-SERVICE/api/orders/"+this.orderId).subscribe({
       next : order => {
         this.orderDetails = order
       },

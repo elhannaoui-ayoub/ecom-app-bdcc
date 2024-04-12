@@ -11,7 +11,7 @@ export class ProductsComponent {
   constructor(private http : HttpClient) {
   }
   ngOnInit() {
-    this.http.get("http://localhost:8087/api/products").subscribe({
+    this.http.get("http://localhost:8888/INV-SERVICE/api/products").subscribe({
       next : data => {
         this.products = data;
       },

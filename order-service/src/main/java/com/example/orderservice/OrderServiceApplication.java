@@ -1,5 +1,5 @@
 package com.example.orderservice;
-
+import java.util.Random;
 
 
 import com.example.orderservice.clients.InventoryRestClient;
@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+
 @SpringBootApplication
 @EnableFeignClients
 public class OrderServiceApplication {
@@ -36,10 +37,13 @@ public class OrderServiceApplication {
 		return args -> {
 			//List<Product> allProducts = inventoryRestClient.getAllProducts();
 			List<String> productsIds = List.of("P01","P02","P03");
+			List<String> customersIds = List.of("C01","C02");
 			for (int i = 0; i < 5; i++) {
+				Random random = new Random();
 				Order order = Order.builder()
 						.id(UUID.randomUUID().toString())
 						.date(LocalDate.now())
+						.customerId(customersIds.get(random.nextInt(2)))
 						.state(OrderState.PENDING)
 						.build();
 				Order savedOrder = orderRepository.save(order);
